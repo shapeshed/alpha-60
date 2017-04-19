@@ -1,0 +1,133 @@
+- name: Refresh pacman
+  become: true
+  pacman:
+    update_cache: yes
+
+- name: Set timezone to Europe/London
+  become: true
+  timezone:
+    name: Europe/London
+
+- name: Set locale to en_GB.utf8
+  become: true
+  command: localectl set-locale LANG=en_GB.utf8
+
+# Bug with with_items and include_role so being verbose..
+# https://github.com/ansible/ansible/issues/21285
+
+  #- name: Install docker
+  #include_role:
+  #  name: docker
+
+- name: Install iptables
+  include_role:
+    name: iptables
+
+- name: Install motd
+  include_role:
+    name: motd
+
+- name: Install ntp
+  include_role:
+    name: ntp
+
+- name: Install openssh-server
+  include_role:
+    name: openssh-server
+
+- name: Install packages
+  become: true
+  package: 
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - arandr
+    - aws-cli
+    - ctags
+    - curl
+    - feh
+    - git
+    - go
+    - htop
+    - jq
+    - mupdf
+    - mutt
+    - msmtp
+    - nodejs
+    - pass
+    - rsync
+    - scrot
+    - ruby
+    - traceroute
+    - tig
+    - vim
+    - w3m
+    - wget
+    - zsh
+
+- name: Allow wheel to sudo with no password
+  become: true
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: visudo -cf %s
+
+- name: Open firewall for established and related connections
+  become: yes
+  iptables:
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+
+- name: Open firewall for ssh
+  become: true
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 22
+    jump: ACCEPT
+
+- name: Open firewall for http
+  become: true
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 80
+    jump: ACCEPT
+
+- name: Open firewall for https
+  become: true
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 443
+    jump: ACCEPT
+
+- name: Open firewall for connections from localhost
+  become: yes
+  iptables:
+    chain: INPUT
+    in_interface: lo
+    jump: ACCEPT
+
+- name: Close firewall for anything else on the INPUT chain
+  become: true
+  iptables:
+    chain: INPUT
+    jump: DROP
+
+- name: Close firewall for anything else on the FORWARD chain
+  become: true
+  iptables:
+    chain: FORWARD
+    jump: DROP
+
+- name: Open firewall for outbound traffic
+  become: true
+  iptables:
+    chain: OUTPUT
+    jump: ACCEPT
+    # notify: Save iptables
+

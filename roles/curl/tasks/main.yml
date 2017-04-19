@@ -1,0 +1,6 @@
+---
+- name: Install curl
+  become: true
+  package: 
+    name: curl
+    state: present

@@ -1,0 +1,13 @@
+---
+- name: Install iptables
+  become: true
+  package: 
+    name: iptables
+    state: present
+
+    #- name: Start iptables service
+    #  service:
+    # name: iptables
+    #enabled: true
+    #state: started
+

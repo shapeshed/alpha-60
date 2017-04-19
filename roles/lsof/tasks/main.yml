@@ -1,0 +1,6 @@
+---
+- name: Install lsof
+  become: true
+  package: 
+    name: lsof
+    state: present

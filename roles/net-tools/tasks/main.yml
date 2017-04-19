@@ -1,0 +1,6 @@
+---
+- name: Install net-tools
+  become: true
+  package: 
+    name: net-tools
+    state: present

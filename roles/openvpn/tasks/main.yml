@@ -1,0 +1,116 @@
+---
+- name: Flush any previously applied rules
+  become: yes
+  iptables:
+    flush: yes
+
+- name: foo
+  become: yes
+  shell: "iptables -A INPUT -p tcp -m tcp --dport 22 -m state --state NEW -m recent --update --seconds 60 --hitcount 5 --name DEFAULT --mask 255.255.255.255 --rsource -j DROP"
+
+- name: bar
+  become: yes
+  shell: "iptables -A INPUT -p tcp -m tcp --dport 22 -m state --state NEW -m recent --set --name DEFAULT --mask 255.255.255.255 --rsource"
+
+- name: Open firewall for established and related connections
+  become: yes
+  iptables:
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+
+- name: Accept packets from localhost
+  become: true
+  iptables:
+    chain: INPUT
+    source: 127.0.0.0/8
+    destination: 127.0.0.0/8
+    in_interface: lo
+    jump: ACCEPT
+
+- name: Accept ssh connections from local subnet
+  become: true
+  iptables:
+    chain: INPUT
+    source: 192.168.2.0/24
+    destination: 192.168.2.39/32
+    protocol: tcp
+    match: tcp
+    destination_port: 22 
+    jump: ACCEPT
+
+- name: Accept ssh connections from local subnet
+  become: true
+  iptables:
+    chain: INPUT
+    destination: 192.168.2.39/32
+    protocol: udp
+    match: udp
+    destination_port: 1194 
+    jump: ACCEPT
+
+- name: Accept ssh connections from local subnet
+  become: true
+  iptables:
+    chain: INPUT
+    destination: 192.168.2.40/32
+    protocol: tcp
+    match: tcp
+    destination_port: 80
+    jump: ACCEPT
+
+- name: Forward web traffic to 192.168.2.111
+  become: true
+  iptables:
+    chain: FORWARD
+    destination: 192.168.2.111
+    protocol: tcp
+    match: tcp
+    destination_port: 80
+    jump: ACCEPT
+
+- name: Forward ssh traffic to 192.168.2.111
+  become: true
+  iptables:
+    chain: FORWARD
+    destination: 192.168.2.111
+    protocol: tcp
+    match: tcp
+    destination_port: 22
+    jump: ACCEPT
+
+- name: Forward web traffic to 192.168.2.112
+  become: true
+  iptables:
+    chain: FORWARD
+    destination: 192.168.2.112
+    protocol: tcp
+    match: tcp
+    destination_port: 80
+    jump: ACCEPT
+
+- name: Forward web traffic to 192.168.2.114
+  become: true
+  iptables:
+    chain: FORWARD
+    destination: 192.168.2.113
+    protocol: tcp
+    match: tcp
+    destination_port: 80
+    jump: ACCEPT
+
+- name: Forward web traffic to 192.168.2.200
+  become: true
+  iptables:
+    chain: FORWARD
+    destination: 192.168.2.200
+    protocol: tcp
+    match: tcp
+    jump: ACCEPT
+
+- name: Drop all other traffic from 192.168.2.0/24
+  become: true
+  iptables:
+    chain: FORWARD
+    destination: 192.168.2.0/24
+    jump: DROP

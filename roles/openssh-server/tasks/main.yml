@@ -1,0 +1,24 @@
+---
+- name: Install openssh-server
+  become: true
+  package: 
+    name: openssh
+    state: present
+
+- name: Start sshd service
+  become: true
+  service: 
+    name: sshd
+    state: started
+    enabled: true
+
+- name: Manage /etc/ssh/sshd_config
+  become: true
+  copy: 
+    src: files/sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0600
+  notify:
+    - Restart sshd

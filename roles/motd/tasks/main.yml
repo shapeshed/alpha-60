@@ -1,0 +1,9 @@
+---
+- name: Add MOTD file
+  become: true
+  template:
+    src: files/motd.j2
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 0644

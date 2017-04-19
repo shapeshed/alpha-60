@@ -1,0 +1,6 @@
+.vagrant
+.cache
+*~
+*.swp
+*.swo
+*.retry

@@ -1,0 +1,6 @@
+---
+- name: Install Extra Packages for Enterprise Linux
+  become: true
+  package: 
+    name: epel-release
+    state: latest

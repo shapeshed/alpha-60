@@ -1,0 +1,26 @@
+---
+- name: Install bind
+  become: true
+  package: 
+    name: bind
+    state: present
+
+- name: Start bind service
+  become: true
+  service: 
+    name: named
+    state: started
+    enabled: true
+
+- name: Create custom named.conf with desired zone
+  become: true
+  copy: src=files/var/named/clearmatics.net.zone dest=/var/named/clearmatics.net.zone owner=root group=named mode=640
+  notify:
+  - Restart bind
+
+- name: Copy zone forward files for all zones to /var/named
+  become: true
+  copy: src="files/var/named/clearmatics.net.zone" dest="/var/named/clearmatics.net.zone" owner=root group=named mode=640
+  notify:
+  - Restart bind
+
