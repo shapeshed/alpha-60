@@ -1,4 +1,0 @@
-
----
-- name: Reload iptables
-  service: name=sshd state=restarted

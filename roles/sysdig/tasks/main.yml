@@ -1,6 +1,0 @@
----
-- name: Install sysdig
-  become: true
-  package: 
-    name: sysdig
-    state: latest

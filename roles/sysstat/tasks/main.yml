@@ -1,6 +1,0 @@
----
-- name: Install sysstat
-  become: true
-  package: 
-    name: sysstat
-    state: present

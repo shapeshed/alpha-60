@@ -1,6 +1,0 @@
----
-- name: Install rsync
-  become: true
-  package: 
-    name: rsync
-    state: present
