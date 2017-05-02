@@ -1,0 +1,6 @@
+---
+- name: Install mpd
+  become: true
+  package: 
+    name: mpd
+    state: present
