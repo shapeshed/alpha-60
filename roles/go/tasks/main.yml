@@ -1,0 +1,15 @@
+---
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "../vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version | int}}.yml"
+    - "../vars/{{ ansible_distribution }}.yml"
+    - "../vars/{{ ansible_os_family }}.yml"
+    - "../vars/default.yml"
+  when: go_package_name is not defined
+
+- name: Install go
+  become: true
+  package: 
+    name: "{{ go_package_name }}"
+    update_cache: yes
+
