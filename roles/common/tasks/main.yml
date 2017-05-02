@@ -71,6 +71,8 @@
     - ruby
     - traceroute
     - tig
+    - virtualbox
+    - vagrant
     - vim
     - w3m
     - wget
