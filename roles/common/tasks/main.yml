@@ -1,8 +1,3 @@
-#- name: Refresh pacman
-#  become: true
-#  pacman:
-#    update_cache: yes
-
 - name: Set timezone to Europe/London
   become: true
   timezone:
@@ -47,6 +42,10 @@
   include_role:
     name: awscli
 
+- name: Install go
+  include_role:
+    name: go
+
 - name: Install packages
   become: true
   package: 
@@ -58,7 +57,6 @@
     - curl
     - feh
     - git
-    - golang-go
     - htop
     - jq
     - mupdf
@@ -143,4 +141,3 @@
     chain: OUTPUT
     jump: ACCEPT
     # notify: Save iptables
-
