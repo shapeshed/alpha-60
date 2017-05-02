@@ -2,7 +2,7 @@
 - name: Install openssh-server
   become: true
   package: 
-    name: openssh
+    name: openssh-server
     state: present
 
 - name: Start sshd service
