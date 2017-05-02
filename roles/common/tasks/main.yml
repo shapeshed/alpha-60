@@ -1,7 +1,7 @@
-- name: Refresh pacman
-  become: true
-  pacman:
-    update_cache: yes
+#- name: Refresh pacman
+#  become: true
+#  pacman:
+#    update_cache: yes
 
 - name: Set timezone to Europe/London
   become: true
@@ -35,6 +35,18 @@
   include_role:
     name: openssh-server
 
+- name: Install mpd
+  include_role:
+    name: mpd
+
+- name: Install ncmpcpp
+  include_role:
+    name: ncmpcpp
+
+- name: Install awscli
+  include_role:
+    name: awscli
+
 - name: Install packages
   become: true
   package: 
@@ -42,12 +54,11 @@
     state: present
   with_items:
     - arandr
-    - aws-cli
     - ctags
     - curl
     - feh
     - git
-    - go
+    - golang-go
     - htop
     - jq
     - mupdf
