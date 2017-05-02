@@ -8,6 +8,6 @@
 - name: Start ntpd service
   become: true
   service: 
-    name: ntpd
+    name: ntp
     state: started
     enabled: true
