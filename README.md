@@ -1,6 +1,6 @@
 # Alpha 60
 
-Ansible scripts to build a Linux workstation for the way I like it. Comes with tonic and a slice of lime.
+Ansible scripts to build a Linux workstation.
 
 ## Developing and testing 
 
