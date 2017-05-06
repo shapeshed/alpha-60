@@ -1,6 +1,0 @@
----
-- name: Install ncmpcpp
-  become: true
-  package: 
-    name: ncmpcpp
-    state: present

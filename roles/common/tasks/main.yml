@@ -62,6 +62,8 @@
     - mupdf
     - mutt
     - msmtp
+    - ncmpcpp
+    - newsbeuter
     - nodejs
     - pass
     - rsync
