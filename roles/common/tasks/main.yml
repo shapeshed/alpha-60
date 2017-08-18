@@ -30,14 +30,6 @@
   include_role:
     name: openssh-server
 
-- name: Install mpd
-  include_role:
-    name: mpd
-
-- name: Install ncmpcpp
-  include_role:
-    name: ncmpcpp
-
 - name: Install awscli
   include_role:
     name: awscli
@@ -52,30 +44,47 @@
     name: "{{ item }}"
     state: present
   with_items:
+    - acpi
+    - alsa-utils
     - arandr
+    - bc
+    - bzip2
     - ctags
     - curl
+    - dwm
+    - firefox
     - feh
     - git
     - htop
     - jq
+    - mpv
+    - msmtp
     - mupdf
     - mutt
-    - msmtp
-    - ncmpcpp
     - newsbeuter
     - nodejs
+    - npm
     - pass
+    - pulseaudio
     - rsync
     - scrot
+    - slock
+    - surfraw
     - ruby
     - traceroute
     - tig
+    - tmux
+    - tree
     - virtualbox
     - vagrant
     - vim
     - w3m
     - wget
+    - xorg-server
+    - xorg-backlight
+    - xorg-xinit
+    - xorg-xsetroot
+    - youtube-dl
     - zsh
 
 - name: Allow wheel to sudo with no password
