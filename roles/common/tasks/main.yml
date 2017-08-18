@@ -81,7 +81,7 @@
     - w3m
     - wget
     - xorg-server
-    - xorg-backlight
+    - xorg-xbacklight
     - xorg-xinit
     - xorg-xsetroot
     - youtube-dl
