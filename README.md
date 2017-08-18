@@ -1,6 +1,18 @@
 # Alpha 60
 
-Ansible scripts to build a Linux workstation.
+Ansible scripts to build a Linux workstation. 
+
+Supported distributions
+
+* Arch Linux
+
+# Prerequisites
+
+[Ansible][1], shell access to a machine and an internet connection.
+
+# Usage
+
+    ansible-playbook -i inventories/localhost playbook.yml
 
 ## Developing and testing 
 
@@ -21,3 +33,5 @@ Destroy and rebuild with
 Force provisioning with
 
     vagrant provision
+
+[1]: http://docs.ansible.com/ansible/latest/intro_installation.html
