@@ -80,6 +80,7 @@
     - vim
     - w3m
     - wget
+    - xautolock
     - xorg-server
     - xorg-xbacklight
     - xorg-xinit
