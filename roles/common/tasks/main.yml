@@ -75,9 +75,11 @@
     - tig
     - tmux
     - tree
+    - unzip
     - virtualbox
     - vagrant
     - vim
+    - weechat
     - w3m
     - wget
     - xautolock
