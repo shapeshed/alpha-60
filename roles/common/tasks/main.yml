@@ -49,6 +49,7 @@
     - arandr
     - bc
     - bzip2
+    - castget
     - ctags
     - curl
     - dwm
@@ -66,6 +67,7 @@
     - npm
     - pass
     - pulseaudio
+    - redshift
     - rsync
     - scrot
     - slock
