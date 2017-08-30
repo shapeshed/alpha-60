@@ -1,0 +1,2 @@
+cups_package_name: cups
+cups_service_name: org.cups.cupsd
