@@ -4,3 +4,4 @@
 *.swp
 *.swo
 *.retry
+roles/openssh-server
