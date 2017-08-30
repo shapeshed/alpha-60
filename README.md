@@ -1,6 +1,8 @@
 # Alpha 60
 
-Ansible scripts to build a Linux workstation. 
+Ansible scripts to build and maintain a Linux workstation the way I like. 
+
+I use these scripts in conjunction with my [dotfiles][2]. 
 
 Supported distributions
 
@@ -35,3 +37,4 @@ Force provisioning with
     vagrant provision
 
 [1]: http://docs.ansible.com/ansible/latest/intro_installation.html
+[2]: https://github.com/shapeshed/dotfiles
