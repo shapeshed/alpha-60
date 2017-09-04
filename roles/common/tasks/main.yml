@@ -18,6 +18,10 @@
   include_role:
     name: cups
 
+    #- name: Install docker
+    # include_role:
+    #name: docker
+
 - name: Install go
   include_role:
     name: go
@@ -65,14 +69,17 @@
     - feh
     - git
     - htop
+    - isync
     - jq
     - mpv
     - mpc
     - msmtp
     - mupdf
     - mutt
+    - openvpn
     - namcap
     - newsbeuter
+    - notmuch
     - nodejs
     - npm
     - pass
@@ -167,4 +174,5 @@
   iptables:
     chain: OUTPUT
     jump: ACCEPT
-    # notify: Save iptables
+  notify: 
+    - Save iptables
