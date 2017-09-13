@@ -82,6 +82,7 @@
     - notmuch
     - nodejs
     - npm
+    - optipng
     - pass
     - pwgen
     - pulseaudio
