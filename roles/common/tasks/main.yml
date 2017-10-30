@@ -38,17 +38,29 @@
   include_role:
     name: mpd
 
+- name: Install castget
+  include_role:
+    name: castget
+
+- name: Install newsboat
+  include_role:
+    name: newsboat
+
 - name: Install ntp
   include_role:
     name: ntp
 
-- name: Install openssh-server
-  include_role:
-    name: openssh-server
+    #- name: Install openssh-server
+    #  include_role:
+    #    name: openssh-server
 
 - name: Install redshift
   include_role:
     name: redshift
+
+- name: Install isync
+  include_role:
+    name: isync
 
 - name: Install packages
   become: true
@@ -61,7 +73,6 @@
     - arandr
     - bc
     - bzip2
-    - castget
     - ctags
     - curl
     - dwm
@@ -69,7 +80,6 @@
     - feh
     - git
     - htop
-    - isync
     - jq
     - mpv
     - mpc
@@ -78,7 +88,6 @@
     - mutt
     - openvpn
     - namcap
-    - newsbeuter
     - notmuch
     - nodejs
     - npm
@@ -95,6 +104,7 @@
     - tig
     - tmux
     - tree
+    - ttf-liberation
     - unzip
     - virtualbox
     - vagrant
