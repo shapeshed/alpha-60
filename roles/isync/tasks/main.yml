@@ -1,0 +1,27 @@
+---
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "../vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version | int}}.yml"
+    - "../vars/{{ ansible_distribution }}.yml"
+    - "../vars/{{ ansible_os_family }}.yml"
+    - "../vars/default.yml"
+  when: isync_package_name is not defined
+
+- name: Install isync
+  become: true
+  package: 
+    name: "{{ isync_package_name }}"
+    state: present
+
+- name: Enable and start isync systemd service
+  systemd:
+    name: "{{ isync_service_name }}"
+    enabled: yes
+    user: yes
+
+- name: Enable and start isync systemd timer
+  systemd:
+    name: "{{ isync_service_name }}.timer"
+    enabled: yes
+    state: started
+    user: yes
