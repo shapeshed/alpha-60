@@ -13,6 +13,20 @@
     name: "{{ castget_package_name }}"
     state: present
 
+- name: Create music directory
+  file:
+    path: "{{ ansible_env.HOME }}/music/podcasts"
+    state: directory
+    mode: 0755
+
+- name: Create podcast directories
+  file:
+    path: "{{ ansible_env.HOME }}/music/podcasts/{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - "{{ castget_folders }}"
+    
 - name: Enable and start castget systemd service
   systemd:
     name: "{{ castget_service_name }}"
