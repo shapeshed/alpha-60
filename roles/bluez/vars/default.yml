@@ -1,0 +1,3 @@
+bluez_package_name: bluez
+bluez_utils_package_name: bluez-utils
+bluez_service_name: bluetooth
