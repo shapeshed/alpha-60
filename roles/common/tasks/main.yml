@@ -1,3 +1,13 @@
+- name: Install cower
+  aur:
+    name: cower 
+    user: "{{ ansible_env.USER }}"
+
+- name: Install st-solarized
+  aur:
+    name: st-solarized
+    user: "{{ ansible_env.USER }}"
+
 - name: Set timezone to Europe/London
   become: true
   timezone:
@@ -62,6 +72,30 @@
   include_role:
     name: isync
 
+- name: Install bluez
+  include_role:
+    name: bluez
+
+- name: Install dnsmasq
+  include_role:
+    name: dnsmasq
+
+- name: Install dnscrypt-proxy
+  include_role:
+    name: dnscrypt-proxy
+
+- name: Install nitrokey 
+  include_role:
+    name: nitrokey
+
+- name: Install xorg 
+  include_role:
+    name: xorg
+
+- name: Install msmtp 
+  include_role:
+    name: msmtp
+
 - name: Install packages
   become: true
   package: 
@@ -80,10 +114,10 @@
     - feh
     - git
     - htop
+    - id3
     - jq
     - mpv
     - mpc
-    - msmtp
     - mupdf
     - mutt
     - openvpn
@@ -93,11 +127,14 @@
     - npm
     - optipng
     - pass
+    - pavucontrol
     - pwgen
     - pulseaudio
+    - pulseaudio-bluetooth
     - rsync
     - scrot
     - slock
+    - speedtest-cli
     - surfraw
     - ruby
     - traceroute
