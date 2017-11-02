@@ -109,9 +109,10 @@
     - virtualbox
     - vagrant
     - vim
-    - weechat
     - w3m
+    - weechat
     - wget
+    - wpa_supplicant
     - xautolock
     - xf86-video-intel
     - xorg-server
