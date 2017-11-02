@@ -1,0 +1,39 @@
+---
+- name: Install dnscrypt-proxy
+  become: true
+  package: 
+    name: dnscrypt-proxy
+    state: present
+
+- name: Add dnscrypt user
+  become: true
+  user:
+    name: dnscrypt
+    shell: /sbin/nologin
+    home: /var/dnscrypt
+
+- name: Copy dnsmasq configuration
+  become: true
+  copy:
+    src: "{{ role_path }}/files/dnscrypt-proxy.conf"
+    dest: /etc/dnscrypt-proxy.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy dnsmasq socket
+  become: true
+  copy:
+    src: "{{ role_path }}/files/dnscrypt-proxy.socket"
+    dest: /usr/lib/systemd/system/dnscrypt-proxy.socket
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable and start dnscrypt-proxy systemd service
+  become: true
+  systemd:
+    name: dnscrypt-proxy
+    enabled: yes
+    state: started
+
