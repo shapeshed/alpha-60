@@ -1,0 +1,30 @@
+---
+- name: Install msmtp
+  become: true
+  package: 
+    name: msmtp
+    state: present
+
+- name: Copy msmtpq scripts
+  become: true
+  copy:
+    src: "{{ item }}"
+    dest:  /usr/local/bin/
+    owner: root
+    group: root
+    mode: 0755
+  with_fileglob:
+    - /usr/share/doc/msmtp/msmtpqueue/*
+
+- name: Enable and start msmtpq systemd service
+  systemd:
+    name: msmtpq
+    enabled: yes
+    user: yes
+
+- name: Enable and start msmtpq systemd timer
+  systemd:
+    name: msmtpq.timer
+    enabled: yes
+    state: started
+    user: yes
