@@ -19,3 +19,4 @@
   systemd:
     name: "{{ cups_service_name }}"
     enabled: yes
+    state: started
