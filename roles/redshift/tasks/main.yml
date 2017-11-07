@@ -17,5 +17,6 @@
 - name: Enable and start reshift systemd service
   systemd:
     name: "{{ redshift_service_name }}"
+    state: started
     enabled: yes
     user: yes
