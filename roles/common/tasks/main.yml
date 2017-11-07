@@ -1,12 +1,12 @@
-- name: Install cower
+- name: Install aur packages
   aur:
-    name: cower 
+    name: "{{ item }}"
     user: "{{ ansible_env.USER }}"
-
-- name: Install st-solarized
-  aur:
-    name: st-solarized
-    user: "{{ ansible_env.USER }}"
+  with_items:
+    - cower
+    - minify
+    - st-solarized
+    - urlview
 
 - name: Set timezone to Europe/London
   become: true
