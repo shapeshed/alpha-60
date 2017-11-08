@@ -2,9 +2,7 @@
 
 Vagrant.configure("2") do |config|
 
-  #config.vm.box = "terrywang/archlinux"
-  #config.vm.box = "wholebits/archlinux"
-  config.vm.box = "boxcutter/ubuntu1610"
+  config.vm.box = "terrywang/archlinux"
 
   # config.vm.network :private_network, ip: "192.168.111.222"
 
