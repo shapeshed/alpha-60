@@ -13,6 +13,18 @@
     name: "{{ isync_package_name }}"
     state: present
 
+- name: Copy isync systemd config
+  become: true
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: 0644
+  with_items:
+    - mbsync.service
+    - mbsync.timer
+
 - name: Enable and start isync systemd service
   systemd:
     name: "{{ isync_service_name }}"

@@ -13,6 +13,18 @@
     name: "{{ newsboat_package_name }}"
     state: present
 
+- name: Copy castget systemd config
+  become: true
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: 0644
+  with_items:
+    - newsboat.service
+    - newsboat.timer
+
 - name: Enable and start newsboat systemd service
   systemd:
     name: "{{ newsboat_service_name }}"
