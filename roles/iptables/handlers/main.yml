@@ -5,4 +5,5 @@
     state: restarted
 
 - name: Save iptables
-  shell: /sbin/iptables-save > /etc/sysconfig/iptables
+  become: true
+  shell: /sbin/iptables-save > /etc/iptables/iptables.rules

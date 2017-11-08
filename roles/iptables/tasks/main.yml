@@ -5,9 +5,75 @@
     name: iptables
     state: present
 
-    #- name: Start iptables service
-    #  service:
-    # name: iptables
-    #enabled: true
-    #state: started
+- name: Ansible copy files remote to remote
+  become: true
+  copy:
+    src: /etc/iptables/empty.rules
+    dest: /etc/iptables/iptables.rules
+    remote_src: yes
+
+- name: Open firewall for established and related connections
+  become: yes
+  iptables:
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+
+- name: Open firewall for ssh
+  become: true
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 22
+    jump: ACCEPT
+
+- name: Open firewall for http
+  become: true
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 80
+    jump: ACCEPT
+
+- name: Open firewall for https
+  become: true
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 443
+    jump: ACCEPT
+
+- name: Open firewall for connections from localhost
+  become: yes
+  iptables:
+    chain: INPUT
+    in_interface: lo
+    jump: ACCEPT
+
+- name: Close firewall for anything else on the INPUT chain
+  become: true
+  iptables:
+    chain: INPUT
+    jump: DROP
+
+- name: Close firewall for anything else on the FORWARD chain
+  become: true
+  iptables:
+    chain: FORWARD
+    jump: DROP
+
+- name: Open firewall for outbound traffic
+  become: true
+  iptables:
+    chain: OUTPUT
+    jump: ACCEPT
+  notify: 
+    - Save iptables
+
+- name: Start iptables service
+  become: true
+  service:
+    name: iptables
+    enabled: true
+    state: started
 
