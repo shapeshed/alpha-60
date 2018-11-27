@@ -9,10 +9,28 @@
     name: "{{ item }}"
     user: "{{ ansible_env.USER }}"
   with_items:
-    #- cower
+    - apache-tools
+    - apachedirectorystudio
+    - cnijfilter2-mg7700
+    - cower
+    - dwm
+    - get_iplayer
+    - google-chrome
+    - id3
+    - kubectl-bin
+    - ledger-live-bin
     - minify
+    - mist
+    - rtv
     - st-solarized
+    - skypeforlinux-stable-bin
+    - spotify
+    - st-solarized
+    - tor-browser
+    - wee-slack
     - urlview
+    - zoom
+    - openvpn-reconnect
 
 - name: Set timezone to Europe/London
   become: true
@@ -113,9 +131,11 @@
     - arandr
     - bc
     - bzip2
+    - coreutils
     - ctags
     - curl
     - dwm
+    - dia
     - firefox
     - feh
     - git
@@ -123,6 +143,7 @@
     - hugo
     - id3
     - jq
+    - khal
     - mpv
     - mpc
     - mupdf
@@ -134,17 +155,22 @@
     - npm
     - optipng
     - pass
+    - pass-otp
+    - pandoc
     - pavucontrol
     - pwgen
     - pulseaudio
     - pulseaudio-bluetooth
+    - python
     - rsync
     - scrot
     - slock
+    - solidity
     - speedtest-cli
     - surfraw
     - ruby
     - traceroute
+    - terraform
     - tig
     - tmux
     - tree
@@ -152,11 +178,14 @@
     - unzip
     - virtualbox
     - vagrant
+    - vault
     - vim
     - w3m
     - weechat
     - wget
     - wpa_supplicant
+    - wireshark-cli
+    - wireshark-qt
     - xautolock
     - xf86-video-intel
     - xorg-server
