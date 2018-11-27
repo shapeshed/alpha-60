@@ -17,7 +17,7 @@
   systemd:
     name: "{{ mpd_service_name }}"
     enabled: yes
-    user: yes
+    scope: user
 
 - name: Create music directory
   file:
