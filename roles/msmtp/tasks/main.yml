@@ -32,11 +32,11 @@
   systemd:
     name: msmtpq
     enabled: yes
-    user: yes
+    scope: user
 
 - name: Enable and start msmtpq systemd timer
   systemd:
     name: msmtpq.timer
     enabled: yes
     state: started
-    user: yes
+    scope: user
