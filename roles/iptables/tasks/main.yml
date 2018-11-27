@@ -13,7 +13,7 @@
     remote_src: yes
 
 - name: Open firewall for established and related connections
-  become: yes
+  become: true
   iptables:
     chain: INPUT
     ctstate: ESTABLISHED,RELATED
@@ -44,7 +44,7 @@
     jump: ACCEPT
 
 - name: Open firewall for connections from localhost
-  become: yes
+  become: true
   iptables:
     chain: INPUT
     in_interface: lo
