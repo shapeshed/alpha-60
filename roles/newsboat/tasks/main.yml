@@ -29,11 +29,12 @@
   systemd:
     name: "{{ newsboat_service_name }}"
     enabled: yes
-    user: yes
+    scope: user
 
 - name: Enable and start newsboat systemd timer
   systemd:
     name: "{{ newsboat_service_name }}.timer"
     enabled: yes
     state: started
-    user: yes
+    scope: user
+

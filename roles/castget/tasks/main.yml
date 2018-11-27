@@ -43,11 +43,11 @@
   systemd:
     name: "{{ castget_service_name }}"
     enabled: yes
-    user: yes
+    scope: user
 
 - name: Enable and start castget systemd timer
   systemd:
     name: "{{ castget_service_name }}.timer"
     enabled: yes
     state: started
-    user: yes
+    scope: user
