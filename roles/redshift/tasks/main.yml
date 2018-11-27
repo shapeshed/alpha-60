@@ -19,4 +19,4 @@
     name: "{{ redshift_service_name }}"
     state: started
     enabled: yes
-    user: yes
+    scope: user
