@@ -15,8 +15,8 @@
 - name: Copy dnsmasq configuration
   become: true
   copy:
-    src: "{{ role_path }}/files/dnscrypt-proxy.conf"
-    dest: /etc/dnscrypt-proxy.conf
+    src: "{{ role_path }}/files/dnscrypt-proxy.toml"
+    dest: /etc/dnscrypt-proxy/dnscrypt-proxy.toml
     owner: root
     group: root
     mode: 0644
