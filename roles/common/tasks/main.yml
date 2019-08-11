@@ -169,6 +169,7 @@
     - speedtest-cli
     - surfraw
     - ruby
+    - task
     - traceroute
     - terraform
     - tig
