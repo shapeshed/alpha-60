@@ -9,29 +9,17 @@
     name: "{{ item }}"
     user: "{{ ansible_env.USER }}"
   with_items:
-    - apache-tools
-    - apachedirectorystudio
-    - cnijfilter2-mg7700
-    - cower
     - dwm
-    - get_iplayer
-    - google-chrome
-    - id3
     - kubectl-bin
+    - ledger-udev
     - ledger-live-bin
     - minify
-    - mist
     - rtv
     - st-solarized
-    - skypeforlinux-stable-bin
-    - spotify
-    - st-solarized
-    - tor-browser
+    - spotify-dev
     - wee-slack-git
-    - urlview
+    - urlview-git
     - zoom
-    - openvpn-reconnect
-
 - name: Set timezone to Europe/London
   become: true
   timezone:
@@ -129,19 +117,18 @@
     - acpi
     - alsa-utils
     - arandr
+    - base-devel
     - bc
     - bzip2
     - coreutils
     - ctags
     - curl
-    - dwm
     - dia
     - firefox
     - feh
     - git
     - htop
     - hugo
-    - id3
     - jq
     - khal
     - mpv
@@ -153,6 +140,7 @@
     - notmuch
     - nodejs
     - npm
+    - openssh
     - optipng
     - pass
     - pass-otp
