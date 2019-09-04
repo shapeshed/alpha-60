@@ -1,0 +1,3 @@
+ccid_package_name: ccid
+opensc_package_name: opensc
+opensc_service_name: pcscd

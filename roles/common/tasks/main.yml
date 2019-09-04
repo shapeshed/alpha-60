@@ -15,6 +15,7 @@
     - ledger-live-bin
     - minify
     - rtv
+    - signal-desktop-bin
     - st-solarized
     - spotify-dev
     - wee-slack-git
@@ -35,6 +36,10 @@
 - name: Install awscli
   include_role:
     name: awscli
+
+- name: Install ccid
+  include_role:
+    name: ccid
 
 - name: Install cups
   include_role:
@@ -139,6 +144,7 @@
     - namcap
     - notmuch
     - nodejs
+    - noto-fonts
     - npm
     - openssh
     - optipng
@@ -150,6 +156,8 @@
     - pulseaudio
     - pulseaudio-bluetooth
     - python
+    - python-requests-oauthlib
+    - python2-websocket-client
     - rsync
     - scrot
     - slock
@@ -163,8 +171,12 @@
     - tig
     - tmux
     - tree
+    - ttf-droid
+    - ttf-dejavu
     - ttf-liberation
+    - ttf-roboto
     - unzip
+    - vdirsyncer
     - virtualbox
     - vagrant
     - vault
