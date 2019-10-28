@@ -12,8 +12,8 @@
     dest: /etc/iptables/iptables.rules
     remote_src: yes
 
-- name: Open firewall for established and related connections
-  become: true
+- name: Allow related and established connections
+  become: yes
   iptables:
     chain: INPUT
     ctstate: ESTABLISHED,RELATED

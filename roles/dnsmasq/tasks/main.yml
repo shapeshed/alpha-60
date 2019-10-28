@@ -14,7 +14,7 @@
     group: root
     mode: 0644
 
-- name: Enable and start isync systemd service
+- name: Enable and start dnsmasq systemd service
   become: true
   systemd:
     name: dnsmasq
